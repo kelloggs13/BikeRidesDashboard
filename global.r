@@ -1,9 +1,5 @@
 
 
-# ideas:
-# - add tabs (overview/graphics/analysis & rawdata)
-# - readme (in tab or in sidebar) so the dashboard is self-documented
-# - githup repo einrichten
 
 rm(list=ls())
 
@@ -27,7 +23,6 @@ require(fresh)
 require(patchwork)
 
 kcal_per_cheeseburger <- 275
-
 
 source("./import_bike_files.r")
 source("./prep_bike_data.r")

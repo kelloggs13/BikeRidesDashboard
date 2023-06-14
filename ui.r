@@ -12,6 +12,8 @@ mytheme <- create_theme(
 )
 
 dashboardPage(skin = "black",
+              
+
                     dashboardHeader(title = "", disable = TRUE),
                     dashboardSidebar(div(style='border: 0px solid grey; margin:15px;',
                                          h1("Bike Riding Data"),
@@ -27,7 +29,7 @@ dashboardPage(skin = "black",
                       fluidRow(
                         column(4, h4('Number of Days with Rides')),
                         column(4, h4('Total Kilometers')),
-                        column(4, h4(paste("Total Number of Cheeseburgers (1 Cheeseburger =" ,kcal_per_cheeseburger ,"kCal)")))
+                        column(4, h4(paste("Total Number of Cheeseburgers Burnt (1 Cheeseburger =" ,kcal_per_cheeseburger ,"kCal)")))
                       ),
                       
                       fluidRow(

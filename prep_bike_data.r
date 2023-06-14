@@ -47,7 +47,7 @@ plot.timeseries <- function(df, var, col.line = "#008B8B", col.area = "#AFEEEE",
 }
 
 p.ts.distance <- plot.timeseries(strava.rides.day, distance, title = "Kilometers per Day")
-p.ts.cheeseburgers <- plot.timeseries(strava.rides.day, cheeseburgers, title = "Cheeseburgers per Day")
+p.ts.cheeseburgers <- plot.timeseries(strava.rides.day, cheeseburgers, title = "Cheeseburgers Burnt per Day")
 
 p.all <-  p.cal.ridedays + ( p.ts.distance / p.ts.cheeseburgers ) 
 
