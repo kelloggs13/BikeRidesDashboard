@@ -21,6 +21,7 @@ require(rStrava)
 require(httr)
 require(fresh)
 require(patchwork)
+require(plotly)
 
 kcal_per_cheeseburger <- 275
 

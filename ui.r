@@ -27,9 +27,9 @@ dashboardPage(skin = "black",
                       tags$style(".small-box.bg-green { background-color: #AFEEEE !important; color: #008B8B !important; }"),
                       
                       fluidRow(
-                        column(4, h4('Number of Days with Rides')),
-                        column(4, h4('Total Kilometers')),
-                        column(4, h4(paste("Total Number of Cheeseburgers Burnt (1 Cheeseburger =" ,kcal_per_cheeseburger ,"kCal)")))
+                        column(4, h4(strong('Number of Days with Rides'))),
+                        column(4, h4(strong('Total Kilometers'))),
+                        column(4, h4(strong(paste("Total Number of Cheeseburgers Burned (1 Cheeseburger =" ,kcal_per_cheeseburger ,"kCal)"))))
                       ),
                       
                       fluidRow(
@@ -39,9 +39,13 @@ dashboardPage(skin = "black",
                       ),
       
                       fluidRow(
-                        column(12,
-                         plotOutput('p.all')
-                         )
+                        column(6,
+                               plotlyOutput('p.cal.ridedays', height = 800)
+                         ),
+                        column(6,
+                               plotlyOutput('p.ts.distance', height = 400), 
+                               plotlyOutput('p.ts.cheeseburgers', height = 400)
+                               )
                         ),
                       
                       fluidRow(column(12, span(textOutput('t.lastride'), style="color:lightgrey")))

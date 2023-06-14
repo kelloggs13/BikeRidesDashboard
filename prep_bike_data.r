@@ -1,7 +1,7 @@
 
 
 
-df.calendar <- data.frame(Date=seq(as.Date('2023-05-01'), ceiling_date(Sys.Date(), unit = "year")-1, 1)) %>% 
+df.calendar <- data.frame(Date=seq(as.Date('2023-05-01'), ceiling_date(Sys.Date(), unit = "month")-1, 1)) %>% 
   mutate( month = month(Date),
           year = year(Date),
           day = day(Date),
@@ -12,7 +12,7 @@ df.calendar <- data.frame(Date=seq(as.Date('2023-05-01'), ceiling_date(Sys.Date(
 
 
 
-df.plot.day <- left_join(df.calendar, strava.rides.day, by = "Date")  
+df.plot.day <- inner_join(df.calendar, strava.rides.day, by = "Date")  
 
 
 plot.calendar.hm <- function(df, var, title, coltype){
@@ -47,10 +47,11 @@ plot.timeseries <- function(df, var, col.line = "#008B8B", col.area = "#AFEEEE",
 }
 
 p.ts.distance <- plot.timeseries(strava.rides.day, distance, title = "Kilometers per Day")
-p.ts.cheeseburgers <- plot.timeseries(strava.rides.day, cheeseburgers, title = "Cheeseburgers Burnt per Day")
+p.ts.cheeseburgers <- plot.timeseries(strava.rides.day, cheeseburgers, title = "Cheeseburgers Burned per Day")
 
-p.all <-  p.cal.ridedays + ( p.ts.distance / p.ts.cheeseburgers ) 
-
+p.cal.ridedays <- ggplotly(p.cal.ridedays) 
+p.ts.distance <- ggplotly(p.ts.distance)
+p.ts.cheeseburgers <- ggplotly(p.ts.cheeseburgers)
 
 vb_total_distance <- strava.rides.day %>% 
   summarise(vb_total_distance = sum(distance, na.rm = TRUE)) %>% 
@@ -72,4 +73,5 @@ t.lastride <- strava.rides %>%
   tail(1) %>% 
   select(start_date, name, distance, external_id) %>% 
   unite(lastride, sep = " -- ") %>% 
-  pull(lastride)
+  pull(lastride) %>% 
+  paste("Last Ride: ", .)
