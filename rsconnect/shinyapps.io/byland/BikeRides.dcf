@@ -5,9 +5,9 @@ account: byland
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9287030
-bundleId: 7346069
+bundleId: 7346272
 url: https://byland.shinyapps.io/BikeRides/
-when: 1686766048.8739
-lastSyncTime: 1686766048.87391
+when: 1686769645.22047
+lastSyncTime: 1686769645.22048
 asMultiple: FALSE
 asStatic: FALSE
