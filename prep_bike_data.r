@@ -1,18 +1,18 @@
 
 
 
-df.calendar <- data.frame(Date=seq(as.Date('2023-05-01'), ceiling_date(Sys.Date(), unit = "month")-1, 1)) %>% 
+df.calendar <- data.frame(Date=seq(as.Date('2023-05-01'), ceiling_date(Sys.Date(), unit = "week")-1, 1)) %>% 
   mutate( month = month(Date),
           year = year(Date),
           day = day(Date),
-          week = week(Date),
+          week = isoweek(Date),
           dayofweek = wday(Date, week_start = 1, label = TRUE, locale = "en"),
           weekofmonth = ceiling((day(Date)- wday(Date)) / 7)
   ) 
 
 
 
-df.plot.day <- inner_join(df.calendar, strava.rides.day, by = "Date")  
+df.plot.day <- left_join(df.calendar, strava.rides.day, by = "Date")  
 
 
 plot.calendar.hm <- function(df, var, title, coltype){
@@ -71,7 +71,7 @@ vb_total_cheeseburgers <- strava.rides %>%
 t.lastride <- strava.rides %>% 
   arrange(start_date) %>% 
   tail(1) %>% 
-  select(start_date, name, distance, external_id) %>% 
+  select(start_date) %>% 
   unite(lastride, sep = " -- ") %>% 
   pull(lastride) %>% 
   paste("Last Ride: ", .)
