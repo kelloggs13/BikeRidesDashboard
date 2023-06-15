@@ -69,7 +69,7 @@ vb_total_cheeseburgers <- strava.rides %>%
   pull(cheeseburgers)
 
 t.lastride <- strava.rides %>% 
-  arrange(Date) %>% 
+  arrange(start_date) %>% 
   tail(1) %>% 
   select(start_date, name, distance, external_id) %>% 
   unite(lastride, sep = " -- ") %>% 

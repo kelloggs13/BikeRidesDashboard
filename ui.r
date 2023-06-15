@@ -47,8 +47,9 @@ dashboardPage(skin = "black",
                                plotlyOutput('p.ts.cheeseburgers', height = 400)
                                )
                         ),
-                      
-                      fluidRow(column(12, span(textOutput('t.lastride'), style="color:lightgrey")))
+                      br(),
+                      br(),
+                      fluidRow(column(12, span(textOutput('t.lastride'), style="color:grey")))
                     )
               )
 
